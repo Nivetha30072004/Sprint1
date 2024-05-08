@@ -17,37 +17,37 @@ import com.tnsif.Placement.repository.PlacementRepository;
 
 @RestController
 public class PlacementController {
+	//this is my controller class
+	
 	@Autowired
 	private PlacementRepository rep;
+
 	@GetMapping("/placement")
-	public List<Placement> getPlacement()
-	{
+	public List<Placement> getPlacement() {
 		return rep.findAll();
-		
+
 	}
+
 	@GetMapping("/placement/{id}")
-	public Optional<Placement> getPlacement( @PathVariable Long id)
-	{
+	public Optional<Placement> getPlacement(@PathVariable Long id) {
 		return rep.findById(id);
 	}
+
 	@PostMapping("/placement")
-	public Placement createPlacement( @RequestBody Placement p )
-	{
+	public Placement createPlacement(@RequestBody Placement p) {
 		return rep.save(p);
-		
+
 	}
+
 	@PutMapping("/placement/{id}")
-	public Placement updatePlacement( @RequestBody Placement p, @PathVariable Long id)
-	{
+	public Placement updatePlacement(@RequestBody Placement p, @PathVariable Long id) {
 		p.setId(id);
 		return rep.save(p);
 	}
+
 	@DeleteMapping("/placement/{id}")
-	public void deletePlacement( @PathVariable Long id)
-	{
+	public void deletePlacement(@PathVariable Long id) {
 		rep.deleteById(id);
 	}
-	
-	
-	
+
 }
